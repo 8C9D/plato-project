@@ -96,7 +96,7 @@ async def retrieve_menu_items(instance, start_url: str) -> list[dict]:
         await enter_address(page) # enters address info so that menu items can be clicked on
 
         # clicks on every menu item using class='sc-761095a3-2 jXhKue', saves a screenshot for reference, and then closes the popup 
-        for i in range(1):
+        for i in range(await page.locator("div[class='sc-761095a3-2 jXhKue']").count()):
             await page.locator("div[class='sc-761095a3-2 jXhKue']").nth(i).click()
             # await page.wait_for_timeout(1000)
             # await page.screenshot(path=f"menuItem{i+1}.png")
